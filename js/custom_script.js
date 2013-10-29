@@ -60,7 +60,7 @@ $(document).ready(function() {
         var request = $.ajax({
 	  url: "./process.php",
 	  type: "POST",
-	  data: { type : 'validateCustomerNumber', customerNumber : $( "#cNumber" ).val() },
+	  data: { type : 'validateCustomerNumber', cNumber : $( "#cNumber" ).val() },
 	  dataType: "json"
 	});
         

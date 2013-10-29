@@ -534,8 +534,9 @@
 
 			$xml_packet->addChild('ticket',$this->ticket);
 			$xml_packet = $xml_packet->asXML();	
-
+			//echo 'xml:'. $xml_packet ;
 			$response = $this->transmit($xml_packet, 'API_EditRecord');
+			//print_r($response);
 		}
 		else {
 			$url_string = $this->qb_ssl . $this->db_id. "?act=API_EditRecord&ticket=". $this->ticket

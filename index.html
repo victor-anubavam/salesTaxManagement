@@ -12,8 +12,9 @@
 <body>
 <h1>TAX Certificate Collection Form</h1>
 
-<form action="" method="post" id="tax-collection" novalidate="novalidate">
+<form action="./process.php" method="POST" id="tax-collection" novalidate="novalidate" enctype="multipart/form-data" target="iframeUploader" >
 	<input type="hidden" name="rid" id="rid" value="">
+	<input type="hidden" name="type" id="type" value="postdata">
     <!-- 
     <div class="label">Customer Name</div><input type="text" id="customername" name="customername" /><br />
     <div class="label">Address Line 1</div><input type="text" id="addr1" name="addr1" /><br />
@@ -114,8 +115,10 @@
 				<option value="WY">WY</option>
 				<option value="YT">YT</option>
      			</select>
+			<!-- <div id="mulitplefileuploaderReseller">Upload</div> -->
+			<input type="file" name="cResellerDoc" id="cResellerDoc">
 		</div>
-		<div id="mulitplefileuploaderReseller">Upload</div>
+		
 	</div>
 	
 	<div id="taxExmpt">
@@ -193,8 +196,10 @@
 				<option value="WY">WY</option>
 				<option value="YT">YT</option>
      			</select>
+			<!-- <div id="mulitplefileuploaderTaxExmpt">Upload</div> -->
+			<input type="file" name="cTaxExmptDoc" id="cTaxExmptDoc">
 		</div>
-		<div id="mulitplefileuploaderTaxExmpt">Upload</div>
+		
 	</div>	
 	</fieldset>
 	
@@ -202,5 +207,6 @@
 <div style="margin-left:140px;"><input type="submit" name="submit" value="Submit" /></div>
     
 </form>
+<iframe id="iframeUploader" name="iframeUploader" rows="100" columns="50"></iframe> 
 </body>
 </html>

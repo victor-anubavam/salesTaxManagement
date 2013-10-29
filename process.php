@@ -19,8 +19,15 @@ $type = $_POST['type'];
 
 switch ($type) {
     case 'validateCustomerNumber':
-        echo json_encode(getCustomerDetails($quickbase, $_POST['customerNumber']));
+        echo json_encode(getCustomerDetails($quickbase, $_POST['cNumber']));
         break;
+    case 'postdata' :
+	echo '<pre>';
+	echo updateCustomerData($quickbase, $_POST);
+	
+	//print_r($_POST);
+	//print_r($_FILES);
+	break;
     
 }
 

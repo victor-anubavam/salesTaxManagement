@@ -27,4 +27,30 @@ function getCustomerDetails($quickbase, $customerNumber) {
 	
 	return $records;
 }
+
+function updateCustomerData ($quickbase, $dataArray) {
+	$fields = array(
+            array(
+                'fid'   => '14',
+                'value' => $dataArray['cContactName']),
+            array(
+                'fid'   => '15',
+                'value' => $dataArray['cEmail']),
+            array(
+                'fid'   => '16',
+		'value'=>  $dataArray['cTele']),
+            array(
+                'fid'   => '17',
+		'value'=>  $dataArray['cFax']),
+            array(
+                'fid'   => '18',
+		'value'=> $dataArray['cWebsite'])
+          );
+	  //echo 'rid: '.$dataArray['rid'].'<br>';
+	  //print_r($fields);
+	  $res = $quickbase->edit_record($dataArray['rid'], $fields);
+	  
+	  if($res) { return $res; }
+	  else { return 'failed to update'; }
+}
 ?>
