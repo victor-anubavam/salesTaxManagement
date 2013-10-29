@@ -456,7 +456,7 @@
 			if ($this->app_token)
 				$xml_packet .= '<apptoken>' . $this->app_token . '</apptoken>';
 
-			$xml_packet .= '<ticket>'.$this->ticket.'</ticket>
+			$xml_packet .= '<ticket>'.$this->ticket.'</ticket><includeRids>1</includeRids>
 				</qdbapi>';
 			//echo 'xml:'.$xml_packet;
 		$response = $this->transmit($xml_packet, 'API_DoQuery');

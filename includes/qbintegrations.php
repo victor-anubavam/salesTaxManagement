@@ -8,12 +8,15 @@ function getCustomerDetails($quickbase, $customerNumber) {
              );
 
 	try { 
-		$results = $quickbase->do_query($queries, '', '');  		
+		$results = $quickbase->do_query($queries, '', '');  
+		//echo '<pre>';		
+		//print_r($results);		
 		// convert simple xml element object to array for better manipulation
 		$results = (array) $results->table->records->record;    
 		if (array_key_exists ('f', $results) ) {
-			$records = $results['f'];
-			$records['result'] = $records;
+			$res['recs'] = $results['f'];
+			$res['rid'] =  $results['@attributes']['rid'];
+			$records['result'] = $res;
 			
    		} else {
      			$records['result'] = 'no matching record found';

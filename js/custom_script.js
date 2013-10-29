@@ -65,6 +65,19 @@ $(document).ready(function() {
 	});
         
 	request.done(function( data ) {
+	   if (data.result != 'no matching record found') {
+		var result = data.result;
+		var rid    = result.rid;
+		var recs   = result.recs;
+		$( "#rid" ).val(rid);
+		$('#cContactName').val(recs[8]);
+		$('#cEmail').val(recs[9]);
+		$('#cTele').val(recs[10]);
+		$('#cFax').val(recs[11]);
+		$('#cWebsite').val(recs[12]);
+	   } else {
+		alert( 'no matching record found' );
+	   }
   	   //$( "#log" ).html( msg );
 	});
     });
