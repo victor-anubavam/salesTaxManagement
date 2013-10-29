@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>TAX Certificate Collection Form</h1>
-
+<iframe id="iframeUploader" name="iframeUploader" rows="10" columns="120" style="width:50%;height:50px;border:none;"></iframe> 
 <form action="./process.php" method="POST" id="tax-collection" novalidate="novalidate" enctype="multipart/form-data" target="iframeUploader" >
 	<input type="hidden" name="rid" id="rid" value="">
 	<input type="hidden" name="type" id="type" value="postdata">
@@ -207,6 +207,5 @@
 <div style="margin-left:140px;"><input type="submit" name="submit" value="Submit" /></div>
     
 </form>
-<iframe id="iframeUploader" name="iframeUploader" rows="100" columns="50"></iframe> 
 </body>
 </html>

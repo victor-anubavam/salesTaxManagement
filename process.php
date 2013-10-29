@@ -23,7 +23,11 @@ switch ($type) {
         break;
     case 'postdata' :
 	echo '<pre>';
-	echo updateCustomerData($quickbase, $_POST);
+	if( updateCustomerData($quickbase, $_POST)) {
+		echo '<b style="color:#076F1A;font-size:14px;">Successfully updated</b>';
+	} else {
+		echo '<b style="color:#FF001A;font-size:14px;">Failed to update</b>';
+	}
 	
 	//print_r($_POST);
 	//print_r($_FILES);
