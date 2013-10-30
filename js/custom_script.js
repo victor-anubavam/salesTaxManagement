@@ -142,7 +142,7 @@ $(document).ready(function() {
         },
         
         submitHandler: function(form) {
-            //form.submit();
+            form.submit();
         }
     });
 

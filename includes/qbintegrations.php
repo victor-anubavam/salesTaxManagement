@@ -72,6 +72,7 @@ function addCertificateQB ($docType, $i, $quickbaseCert){
     }
     
     $uploads = '';
+    
     if($_FILES[$uploadFile]['name']) {
         $file_name = $_FILES[$uploadFile]['name'];
         $f_tmp_name = $_FILES[$uploadFile]['tmp_name'];
@@ -93,7 +94,7 @@ function addCertificateQB ($docType, $i, $quickbaseCert){
             'value' => $_POST[$uploadState]),
         array(
             'fid'   => '8',
-            'value'=> date('Y-m-d')),
+            'value'=> @date('Y-m-d')),
         array(
             'fid'   => '10',
             'value'=> $docType,
