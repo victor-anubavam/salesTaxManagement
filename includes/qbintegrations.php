@@ -58,4 +58,66 @@ function updateCustomerData ($quickbase, $dataArray) {
 	}
 
 }
+
+function addCertificates($quickbaseCert){
+	//print_r($_POST);
+	//echo '<pre>';
+	//print_r($_FILES);
+	//echo 'cust num:'.$_POST['cNumber'].'<br>';
+	// any file upload?
+	if($_FILES['cResellerDoc']['name']) {
+		$file_name = $_FILES['cResellerDoc']['name'];
+		$f_tmp_name = $_FILES['cResellerDoc']['tmp_name'];
+		$file_size = $_FILES['cResellerDoc']['size'];
+		$fh = fopen($f_tmp_name, 'r');
+		$content = fread($fh, $file_size);
+		$content = base64_encode($content);
+		fclose($fh);
+		$uploads = array( array('fid' => '7',
+		'filename' => $file_name,
+		'value' => $content) );
+	}
+	$fields = array(
+            array(
+                'fid'   => '6',
+                'value' => $_POST['selectResellerState']),
+            array(
+                'fid'   => '8',
+                'value'=> date('Y-m-d')),
+            array(
+                'fid'   => '10',
+                'value'=> 'Resale Certificate',
+            array(
+                'fid'   => '11',
+                'value'=> $_POST['cNumber']),
+            array(
+                'fid'   => '12',
+                'value'=> 'Resale Certificate')
+            ));
+	$res = $quickbaseCert->add_record($fields, $uploads);
+    //echo '<pre>aaa';
+    //print_r($res);
+    if($res->errcode == 0) {
+        $fields = array(
+            array(
+                'fid'   => '11',
+                'value' => $_POST['cNumber']),
+            array(
+                'fid'   => '12',
+                'value'=> 'Resale Certificate')
+	    );
+        
+        $rid = $res->rid;
+        //echo 'rid:' . $rid;
+        //echo 'cno:'. $_POST['cNumber'];
+        $res = $quickbaseCert->edit_record($rid, $fields);
+    }
+    
+    if($res->errcode == 0) {
+        return true;
+    }
+    
+    return false;
+}
+
 ?>

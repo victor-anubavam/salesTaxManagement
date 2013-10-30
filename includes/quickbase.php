@@ -216,6 +216,9 @@
 			$xml_packet = $xml_packet->asXML();	
 
 			$response = $this->transmit($xml_packet, 'API_AddRecord');
+            
+            //echo '<pre>';
+            //print_r($response);
 		}
 		else {
 			$url_string = $this->qb_ssl . $this->db_id. "?act=API_AddRecord&ticket=". $this->ticket;
