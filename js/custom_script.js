@@ -1,6 +1,76 @@
 
 $(document).ready(function() {
-  
+    $( document ).ajaxStart(function() {
+        $( "#loading" ).show();
+    });
+     $( document ).ajaxStop(function() {
+        $( "#loading" ).hide();
+    });
+  var states = '<option value="">Select State</option>' +
+				'<option value="AB">AB</option>' +
+				'<option value="AK">AK</option>' +
+				'<option value="AL">AL</option>' +
+				'<option value="AR">AR</option>' +
+				'<option value="AZ">AZ</option>' +
+				'<option value="BC">BC</option>' +
+				'<option value="CA">CA</option>' +
+				'<option value="CO">CO</option>' +
+				'<option value="CT">CT</option>' +
+				'<option value="DC">DC</option>' +
+				'<option value="DE">DE</option>' +
+				'<option value="FL">FL</option>' +
+				'<option value="GA">GA</option>' +
+				'<option value="HI">HI</option>' +
+				'<option value="IA">IA</option>' +
+				'<option value="ID">ID</option>' +
+				'<option value="IL">IL</option>' +
+				'<option value="IN">IN</option>' +
+				'<option value="KS">KS</option>' +
+				'<option value="KY">KY</option>' +
+				'<option value="LA">LA</option>' +
+				'<option value="MA">MA</option>' +
+				'<option value="MB">MB</option>' +
+				'<option value="MD">MD</option>' +
+				'<option value="ME">ME</option>' +
+				'<option value="MI">MI</option>' +
+				'<option value="MN">MN</option>' +
+				'<option value="MO">MO</option>' +
+				'<option value="MS">MS</option>' +
+				'<option value="MT">MT</option>' +
+				'<option value="NB">NB</option>' +
+				'<option value="NC">NC</option>' +
+				'<option value="ND">ND</option>' +
+				'<option value="NE">NE</option>' +
+				'<option value="NH">NH</option>' +
+				'<option value="NJ">NJ</option>' +
+				'<option value="NL">NL</option>' +
+				'<option value="NM">NM</option>' +
+				'<option value="NS">NS</option>' +
+				'<option value="NT">NT</option>' +
+				'<option value="NU">NU</option>' +
+				'<option value="NV">NV</option>' +
+				'<option value="NY">NY</option>' +
+				'<option value="OH">OH</option>' +
+				'<option value="OK">OK</option>' +
+				'<option value="ON">ON</option>' +
+				'<option value="OR">OR</option>' +
+				'<option value="PA">PA</option>' +
+				'<option value="PE">PE</option>' +
+				'<option value="QC">QC</option>' +
+				'<option value="RI">RI</option>' +
+				'<option value="SC">SC</option>' +
+				'<option value="SD">SD</option>' +
+				'<option value="SK">SK</option>' +
+				'<option value="TN">TN</option>' +
+				'<option value="TX">TX</option>' +
+				'<option value="UT">UT</option>' +
+				'<option value="VA">VA</option>' +
+				'<option value="VT">VT</option>' +
+				'<option value="WA">WA</option>' +
+				'<option value="WI">WI</option>' +
+				'<option value="WV">WV</option>' +
+				'<option value="WY">WY</option>' +
+				'<option value="YT">YT</option>';
    var settings = {
 	url: "./includes/upload.php",
 	method: "POST",
@@ -17,10 +87,31 @@ $(document).ready(function() {
 		$("#status").html("<font color='red'>Upload is Failed</font>");
 	}
    }
-   $("#mulitplefileuploaderReseller").uploadFile(settings);
-   $("#mulitplefileuploaderTaxExmpt").uploadFile(settings);
-
-
+  // $("#mulitplefileuploaderReseller").uploadFile(settings);
+  // $("#mulitplefileuploaderTaxExmpt").uploadFile(settings);
+  
+  $( "#resellerNo" ).click(function() {
+      $('#resellerState').hide();
+      $('#addReseller').hide();
+      $('#totalSellerCert').val(0);
+  });
+  
+  $( "#resellerYes" ).click(function() {
+      $('#resellerState').show();
+      $('#addReseller').show();
+      $('#totalSellerCert').val($('#resellerState p').size());
+  });
+  
+  $( "#taxExmptNo" ).click(function() {
+      $('#taxExmptState').hide();
+      $('#addTaxExmpt').hide();
+      $('#totalTaxCert').val(0);
+  });
+  $( "#taxExmptYes" ).click(function() {
+      $('#taxExmptState').show();
+      $('#addTaxExmpt').show();
+      $('#totalTaxCert').val($('#taxExmptState p').size());
+  });
    $("#tax-collection").validate({
     
         // Specify the validation rules
@@ -51,7 +142,7 @@ $(document).ready(function() {
         },
         
         submitHandler: function(form) {
-            form.submit();
+            //form.submit();
         }
     });
 
@@ -75,11 +166,71 @@ $(document).ready(function() {
 		$('#cTele').val(recs[10]);
 		$('#cFax').val(recs[11]);
 		$('#cWebsite').val(recs[12]);
+        $('#btnSubmit').removeAttr('disabled');
 	   } else {
 		alert( 'no matching record found' );
+        $('#btnSubmit').attr('disabled', 'true');
+        $('#cContactName').val('');
+		$('#cEmail').val('');
+		$('#cTele').val('');
+		$('#cFax').val('');
+		$('#cWebsite').val('');
 	   }
   	   //$( "#log" ).html( msg );
 	});
     });
    
+   
+  $(function() {
+       // Add or remove reseller files
+        var resellerDiv = $('#resellerState');
+        var i = $('#resellerState p').size() + 1;
+        $('#addReseller').on('click', function() {
+            $('<p> '+
+                   '<select id="selectResellerState_'+i+'" name="selectResellerState_'+i+'">'+
+                    states + '</select>'+
+                    '<input type="file" name="cResellerDoc_'+i+'" id="cResellerDoc_'+i+'">' + 
+                    '<a href="#" class="remSell">Remove</a>' +
+                    '</p>').appendTo(resellerDiv);
+            $('#totalSellerCert').val(i);
+            i++;
+            
+            return false;
+        });
+        $("#resellerState").on("click", "a.remSell", function(){
+            if( i > 2 ) {
+                $(this).parents('p').remove();
+                i--;                
+            }
+            
+            $('#totalSellerCert').val($('#resellerState p').size());
+            return false;
+        });
+        
+        //Add or remove taxexmpt files        
+        var taxExmptDiv = $('#taxExmptState');
+        var j = $('#taxExmptState p').size() + 1;
+        
+        $('#addTaxExmpt').on('click', function() {
+            $('<p> '+
+                   '<select id="selectTaxExmptState_'+j+'" name="selectTaxExmptState_'+j+'">'+
+                    states + '</select>'+
+                    '<input type="file" name="cTaxExmptDoc_'+j+'" id="cTaxExmptDoc_'+j+'">' + 
+                    '<a href="#" class="remTaxExmpt">Remove</a>' +
+                    '</p>').appendTo(taxExmptDiv);
+            $('#totalTaxCert').val(j);
+            j++;
+            
+            return false;
+        });
+        $("#taxExmptState").on("click", "a.remTaxExmpt", function(){
+            if( j > 2 ) {
+                $(this).parents('p').remove();
+                j--;                
+            }
+            $('#totalTaxCert').val($('#taxExmptState p').size());
+            return false;
+        });
+    });
 });
+

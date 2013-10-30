@@ -10,11 +10,14 @@
 	
 </head>
 <body>
+    <div id="loading" style="display: none;"><center style="margin-top: 30%;">Loading ...<center></div>
 <h1>TAX Certificate Collection Form</h1>
-<iframe id="iframeUploader" name="iframeUploader" rows="10" columns="120" style="width:50%;height:50px;border:none;"></iframe> 
+<iframe id="iframeUploader" name="iframeUploader" style="width:50%;height:50px;border:none;"></iframe> 
 <form action="./process.php" method="POST" id="tax-collection" novalidate="novalidate" enctype="multipart/form-data" target="iframeUploader" >
 	<input type="hidden" name="rid" id="rid" value="">
 	<input type="hidden" name="type" id="type" value="postdata">
+    <input type="hidden" id="totalSellerCert" name="totalSellerCert" value="1">
+    <input type="hidden" id="totalTaxCert" name="totalTaxCert" value="1">
     <!-- 
     <div class="label">Customer Name</div><input type="text" id="customername" name="customername" /><br />
     <div class="label">Address Line 1</div><input type="text" id="addr1" name="addr1" /><br />
@@ -43,12 +46,12 @@
 		<div class="taxquestion">
 			<div class="label">Is a customer reseller ?</div>
 			<br>
-			<input type="radio" name="reseller" value="Yes">Yes
-			<input type="radio" name="reseller" value="No">No
+			<input id="resellerYes" type="radio" name="reseller" value="Yes">Yes
+			<input id="resellerNo" type="radio" name="reseller" value="No">No
 			<br>	
 		</div>
-		<div id="resellerState"> 
-			<select id="selectResellerState" name="selectResellerState">
+        <div id="resellerState" style="display: none;"><p>
+			<select id="selectResellerState_1" name="selectResellerState_1">
 				<option value="">Select State</option>
 				<option value="AB">AB</option>
 				<option value="AK">AK</option>
@@ -116,20 +119,21 @@
 				<option value="YT">YT</option>
      			</select>
 			<!-- <div id="mulitplefileuploaderReseller">Upload</div> -->
-			<input type="file" name="cResellerDoc" id="cResellerDoc">
+			<input type="file" name="cResellerDoc_1" id="cResellerDoc_1">
+            </p>
 		</div>
-		
+		<a href="#" id="addReseller" style="display: none;">Add more ...</a>
 	</div>
 	
 	<div id="taxExmpt">
 		<div class="taxquestion">
     			<div class="label">Is a customer tax exempt ?</div>
 			<br>
-			<input type="radio" name="taxexempt" value="Yes">Yes
-			<input type="radio" name="taxexempt" value="No">No
+			<input id="taxExmptYes" type="radio" name="taxexempt" value="Yes">Yes
+			<input id="taxExmptNo" type="radio" name="taxexempt" value="No">No
 		</div>
-		<div id="taxExmptState"> 
-			<select id="selectTaxExmptState" name="selectTaxExmptState">
+        <div id="taxExmptState" style="display: none;"><p> 
+			<select id="selectTaxExmptState_1" name="selectTaxExmptState_1">
 				<option value="">Select State</option>
 				<option value="AB">AB</option>
 				<option value="AK">AK</option>
@@ -197,14 +201,14 @@
 				<option value="YT">YT</option>
      			</select>
 			<!-- <div id="mulitplefileuploaderTaxExmpt">Upload</div> -->
-			<input type="file" name="cTaxExmptDoc" id="cTaxExmptDoc">
+            <input type="file" name="cTaxExmptDoc_1" id="cTaxExmptDoc_1"></p>
 		</div>
-		
+		<a href="#" id="addTaxExmpt" style="display: none;">Add more ...</a>
 	</div>	
 	</fieldset>
 	
    <br><br>
-<div style="margin-left:140px;"><input type="submit" name="submit" value="Submit" /></div>
+<div style="margin-left:140px;"><input id="btnSubmit" type="submit" name="submit" value="Submit" disabled /></div>
     
 </form>
 </body>
