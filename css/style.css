@@ -209,3 +209,7 @@ padding:5px 5px 0;
 #taxExmptState input  {
   font-size: 12px;
 }
+.btnSubmit {
+  margin-left: 0 !important;
+  text-align: center;
+}
