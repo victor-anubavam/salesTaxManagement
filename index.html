@@ -12,7 +12,7 @@
 <body>
     <div id="loading" style="display: none;"><center style="margin-top: 30%;"><img src="css/loading.gif"/><center></div>
 <h1>TAX Certificate Collection Form</h1>
-<iframe id="iframeUploader" name="iframeUploader" style="width:50%;height:50px;border:none;"></iframe> 
+<div id="iframeloading"><iframe id="iframeUploader" name="iframeUploader" style="width:50%;height:50px;border:none;"></iframe> </div>
 <form action="./process.php" method="POST" id="tax-collection" novalidate="novalidate" enctype="multipart/form-data" target="iframeUploader" >
 	<input type="hidden" name="rid" id="rid" value="">
 	<input type="hidden" name="type" id="type" value="postdata">

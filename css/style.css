@@ -167,6 +167,10 @@ padding:5px 5px 0;
   width: 110%;
   z-index: 9000;
 }
+#iframeloading {
+  margin: 0 auto;
+  text-align: center;
+}
 #tax-collection {
   background: none repeat scroll 0 0 #E9E9E7;
   border-radius: 20px 20px 20px 20px;
@@ -221,9 +225,6 @@ padding:5px 5px 0;
   float: left;
   font-size: 12px;
   margin-left: 212px;
-}
-#iframeUploader {
-  margin: 0 auto 0 297px;
 }
 #loading center{
   background: none repeat scroll 0 0 #EEEEEE;
