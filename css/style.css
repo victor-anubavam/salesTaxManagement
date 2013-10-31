@@ -1,10 +1,11 @@
 .label {
-  width:200px;
-  text-align:right;
-  float:left;
-  padding-right:10px;
-  font-weight:bold;
+  color: #58595B;
+  float: left;
   font-size: 13px;
+  font-weight: normal;
+  padding-right: 10px;
+  text-align: left;
+  width: 200px;
 }
 .taxinfo .label{
   text-align: left;
@@ -18,10 +19,19 @@ h1 {
   font-weight: 100;
   color:#333;
   padding-bottom:20px;
+  text-align: center;
 }
 fieldset {
-  width:  500px;
+  background: none repeat scroll 0 0 #F5F5F5;
+  border: medium none;
+  border-radius: 12px 12px 12px 12px;
+  margin: 0 auto;
   padding: 20px;
+  width: 500px;
+}
+legend {
+  color: #58595b;
+  margin-top: 50px;
 }
 #status{
   font-size: 13px;
@@ -144,16 +154,58 @@ vertical-align:middle;
 padding:5px 5px 0;
 }
 #loading {
-    border: solid 1px black;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    background-color: white;
-    z-index: 100;
-
-    height: 400px;
-    margin-top: -200px;
-
-    width: 600px;
-    margin-left: -300px;
+  border: solid 1px black;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  background-color: white;
+  z-index: 100;
+  height: 400px;
+  margin-top: -200px;
+  width: 600px;
+  margin-left: -300px;
+}
+#tax-collection {
+  background: none repeat scroll 0 0 #E9E9E7;
+  border-radius: 20px 20px 20px 20px;
+  margin: 0 auto;
+  padding: 15px;
+  width: 600px;
+}
+#taxReseller {
+  color: #58595b;
+  float: left;
+  font-size: 12px;
+  padding-right: 10px;
+  width: 45%;
+}
+#taxExmpt {
+  color: #58595b;
+  float: right;
+  font-size: 12px;
+  padding-left: 10px;
+  width: 45%;
+}
+#addReseller ,#addTaxExmpt ,.remSell ,.remTaxExmpt {
+  background: #EDEDED;
+  border: 1px solid;
+  border-radius: 10px 10px 10px 10px;
+  color: #58595B;
+  font-size: 10px;
+  padding: 5px;
+  text-decoration: none;
+}
+.remSell,.remTaxExmpt {
+  float: left;
+  margin: 16px 5px 10px 0;
+}
+#taxReseller p ,#taxExmptState p {
+  clear: both;
+  border-top: 1px solid #58595B;
+  color: #58595B;
+  padding-top: 10px;
+}
+#taxReseller select ,#taxExmptState select,#taxReseller input,
+#taxExmptState input  {
+  font-size: 12px;
 }
