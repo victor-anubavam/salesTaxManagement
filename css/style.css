@@ -29,14 +29,17 @@ fieldset {
   border-radius: 12px 12px 12px 12px;
   margin: 0 auto;
   padding: 20px;
-  width: 500px;
+  width: 650px;
 }
 legend {
   color: #58595b;
-  margin-top: 50px;
+  margin-top: 35px;
 }
 #status{
   font-size: 13px;
+  font-weight: bold;
+}
+.searchcus .label {
   font-weight: bold;
 }
 .ajax-file-upload-statusbar {
@@ -173,26 +176,29 @@ padding:5px 5px 0;
 #btnSubmit{
   padding: 7px;
 }
+.searchcus{
+  padding: 20px 0 0 15px;
+}
 #tax-collection {
   background: none repeat scroll 0 0 #E9E9E7;
   border-radius: 20px 20px 20px 20px;
   margin: 0 auto;
   padding: 15px;
-  width: 600px;
+  width: 700px;
 }
 #taxReseller {
   color: #58595b;
   float: left;
   font-size: 12px;
-  padding-right: 10px;
-  width: 45%;
+ /* padding-right: 10px;*/
+  width: 50%;
 }
 #taxExmpt {
   color: #58595b;
   float: right;
   font-size: 12px;
-  padding-left: 10px;
-  width: 45%;
+/*  padding-left: 10px;*/
+  width: 50%;
 }
 #addReseller ,#addTaxExmpt ,.remSell ,.remTaxExmpt {
   background: #EDEDED;
@@ -201,6 +207,7 @@ padding:5px 5px 0;
   color: #58595B;
   font-size: 10px;
   padding: 5px;
+  outline: none;
   text-decoration: none;
 }
 .remSell,.remTaxExmpt {
@@ -222,11 +229,17 @@ padding:5px 5px 0;
   text-align: center;
 }
 .error {
-  clear: both;
+ /* clear: both;*/
   color: #FF0000;
   float: left;
   font-size: 13px;
-  margin-left: 212px;
+  /*margin-left: 212px;*/
+}
+label.error{
+  padding: 5px 0 0 5px;
+}
+input[type="text"] {
+  width: 215px;
 }
 #loading center{
   background: none repeat scroll 0 0 #EEEEEE;
@@ -237,9 +250,12 @@ padding:5px 5px 0;
 .req {
     color: #FF0000;
 }
+.taxquestion .label{
+  width:100%;
+}
 #filData {
   font-size: 11px;
-  padding-left: 35px;
+  padding-left: 15px;
 }
 .nomatch {
     border: 1px dotted #000000;

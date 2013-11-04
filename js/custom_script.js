@@ -190,7 +190,7 @@ $(document).ready(function() {
 	   } else {
 		//alert( 'no matching record found' );
         $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>");
-        $(".nomatch").hide(5000);
+        $(".nomatch").hide(3000);
         $('#btnSubmit').attr('disabled', 'true');
         $('#cContactName').val('');
 		$('#cEmail').val('');
