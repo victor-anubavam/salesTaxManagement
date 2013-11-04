@@ -6,6 +6,7 @@ $(document).ready(function() {
      $( document ).ajaxStop(function() {
         $( "#loading" ).hide();
     });
+  $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite, input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
   var states = '<option value="">Select State</option>' +
 				'<option value="AB">AB</option>' +
 				'<option value="AK">AK</option>' +
@@ -139,7 +140,7 @@ $(document).ready(function() {
                 usPhoneFormat: true,
             },
             cFax: {
-              required: true,
+              /*required: true,*/
               usfaxFormat: true,
             },
             cWebsite: "required"
@@ -155,7 +156,7 @@ $(document).ready(function() {
             },
             cEmail: "Please enter a valid email address",
             cFax: {
-                required : "Fax is required",
+               /* required : "Fax is required",*/
                  usfaxFormat: "Enter a valid fax number"
             },
             cWebsite: "Website is required"
@@ -179,7 +180,8 @@ $(document).ready(function() {
 	   if (data.result != 'no matching record found') {
 		var result = data.result;
 		var rid    = result.rid;
-		var recs   = result.recs;
+		var recs   = result.recs;      
+        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
 		$( "#rid" ).val(rid);
 		$('#cContactName').val(recs[8]);
 		$('#cEmail').val(recs[9]);
@@ -188,9 +190,10 @@ $(document).ready(function() {
 		$('#cWebsite').val(recs[12]);
         $('#btnSubmit').removeAttr('disabled');
 	   } else {
-		//alert( 'no matching record found' );
+		//alert( 'no matching record found' )
+        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
         $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>");
-        $(".nomatch").hide(3000);
+        $(".nomatch").hide(4000);
         $('#btnSubmit').attr('disabled', 'true');
         $('#cContactName').val('');
 		$('#cEmail').val('');
