@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<title>TAX Certificate Collection Form</title>
 <script src="./js/jquery.min.js"></script>
 <script src="./js/jquery.uploadfile.min.js"></script>
 <script src="./js/jquery.validate.min.js"></script>
+<script src="./js/jquery.maskedinput.min.js"></script>
 <script src="./js/custom_script.js"></script>
 <link href="./css/style.css" rel="stylesheet">
 	
@@ -12,8 +14,10 @@
 <body>
     <div id="loading" style="display: none;"><center style="margin-top: 30%;"><img src="css/loading.gif"/><center></div>
 <h1>TAX Certificate Collection Form</h1>
-<div id="iframeloading"><iframe id="iframeUploader" name="iframeUploader" style="width:50%;height:50px;border:none;"></iframe> </div>
+
+<div id="iframeloading"><iframe id="iframeUploader" name="iframeUploader" style="width:50%;height:54px;border:none;"></iframe> </div>
 <form action="./process.php" method="POST" id="tax-collection" novalidate="novalidate" enctype="multipart/form-data" target="iframeUploader" >
+	<div id="filData"><span class="req">*</span> Mandatory field.</div>
 	<input type="hidden" name="rid" id="rid" value="">
 	<input type="hidden" name="type" id="type" value="postdata">
     <input type="hidden" id="totalSellerCert" name="totalSellerCert" value="1">
@@ -31,12 +35,12 @@
 	
 	<fieldset>
 	     <legend>Customer Contact Information</legend>
-	     <div class="label">Customer Number</div><input type="text" id="cNumber" name="cNumber" /><br /><br />
-             <div class="label">Contact Name</div><input type="text" id="cContactName" name="cContactName" /><br /><br />
-             <div class="label">E-mail Address</div><input type="text" id="cEmail" name="cEmail" /><br /><br />
-             <div class="label">Telephone</div><input type="text" id="cTele" name="cTele" /><br /> <br />
-	     <div class="label">Fax</div><input type="text" id="cFax" name="cFax" /><br /><br />
-             <div class="label">Website</div><input type="text" id="cWebsite" name="cWebsite" /><br /><br />    
+	     <div class="label">Customer Number <span class="req">*</span></div><input type="text" id="cNumber" name="cNumber" /><br /><br />
+             <div class="label">Contact Name <span class="req">*</span></div><input type="text" id="cContactName" name="cContactName" /><br /><br />
+             <div class="label">E-mail Address <span class="req">*</span></div><input type="text" id="cEmail" name="cEmail" /><br /><br />
+             <div class="label">Telephone <span class="req">*</span></div><input type="text" id="cTele" name="cTele" /><br /> <br />
+	     <div class="label">Fax <span class="req">*</span></div><input type="text" id="cFax" name="cFax" /><br /><br />
+             <div class="label">Website <span class="req">*</span></div><input type="text" id="cWebsite" name="cWebsite" /><br /><br />    
 	</fieldset>
 	<br>
 	<fieldset class="taxinfo">

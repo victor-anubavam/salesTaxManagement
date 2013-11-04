@@ -87,8 +87,7 @@ $(document).ready(function() {
 		$("#status").html("<font color='red'>Upload is Failed</font>");
 	}
    }
-  // $("#mulitplefileuploaderReseller").uploadFile(settings);
-  // $("#mulitplefileuploaderTaxExmpt").uploadFile(settings);
+
   
   $( "#resellerNo" ).click(function() {
       $('#resellerState').hide();
@@ -112,6 +111,19 @@ $(document).ready(function() {
       $('#addTaxExmpt').show();
       $('#totalTaxCert').val($('#taxExmptState p').size());
   });
+  
+  $.validator.addMethod("usPhoneFormat", function (value, element) {
+    return this.optional(element) || /^\(\d{3}\) \d{3}\-\d{4}( x\d{1,6})?$/.test(value);
+  }, "Enter a valid phone number.");
+  
+  $.validator.addMethod("usfaxFormat", function (value, element) {
+    return this.optional(element) || /^\(\d{3}\) \d{3}\-\d{4}( x\d{1,6})?$/.test(value);
+  }, "Enter a valid fax number.");
+  
+   $("#cTele,#cFax").mask("?(999) 999-9999");
+  
+ 
+   
    $("#tax-collection").validate({
     
         // Specify the validation rules
@@ -123,29 +135,37 @@ $(document).ready(function() {
                 email: true
             },
             cTele: {
-                required: true                
+                required: true ,
+                usPhoneFormat: true,
             },
-            cFax: "required",
+            cFax: {
+              required: true,
+              usfaxFormat: true,
+            },
             cWebsite: "required"
         },
         
         // Specify the validation error messages
         messages: {
-            cNumber: "customer number is required",
-            cContactName: "contact name is required",
-            cTele: {
-                required: "telephone is required",                
+            cNumber: "Customer number is required",
+            cContactName: "Contact name is required",
+            cTele: {               
+                required: "Telephone is required",
+                usfaxFormat: "Enter a valid phone number"
             },
             cEmail: "Please enter a valid email address",
-            cFax: "fax is required",
-            cWebsite: "website is required"
+            cFax: {
+                required : "Fax is required",
+                 usfaxFormat: "Enter a valid fax number"
+            },
+            cWebsite: "Website is required"
         },
         
         submitHandler: function(form) {
             form.submit();
         }
     });
-
+    
     //Ajax trigger for validating customer number
     $( "#cNumber" ).blur(function() {
         var request = $.ajax({
@@ -168,7 +188,9 @@ $(document).ready(function() {
 		$('#cWebsite').val(recs[12]);
         $('#btnSubmit').removeAttr('disabled');
 	   } else {
-		alert( 'no matching record found' );
+		//alert( 'no matching record found' );
+        $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>");
+        $(".nomatch").hide(5000);
         $('#btnSubmit').attr('disabled', 'true');
         $('#cContactName').val('');
 		$('#cEmail').val('');
