@@ -30,15 +30,14 @@ switch ($type) {
     }else {
         echo '<b style="color:#FF001A;font-size:13px;">Failed to upload certificates</b>';        
     }
-    echo '<br>';
+    echo '<br>';    
 	if( updateCustomerData($quickbase, $_POST)) {
 		echo '<b style="color:#076F1A;font-size:13px;">Customer information has been successfully updated ...</b>';
+        echo "<script>window.parent.document.getElementById('loading').style.display = 'none';</script>";
 	} else {
 		echo '<b style="color:#FF001A;font-size:13px;">Failed to update the customer information</b>';
 	}
-	
-	//print_r($_POST);
-	//print_r($_FILES);
+    
 	break;
     
 }

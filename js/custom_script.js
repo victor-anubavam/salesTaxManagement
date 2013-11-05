@@ -124,9 +124,74 @@ $(document).ready(function() {
    $("#cTele,#cFax").mask("?(999) 999-9999");
   
  
-   
-   $("#tax-collection").validate({
+   $("#tax-collection").submit(function(){
+    var boxes = $('input[name=reseller]:checked');
+    if($(boxes).size() == 0) {
+     alert("Is a customer reseller ? field is required");
+      $("#fileuploadError").val(0);
+     return false;
+    }
+    var countboxes = $('input[name=taxexempt]:checked');
+    if($(countboxes).size() == 0) {
+     alert("Is a customer tax exempt ? field is required");
+      $("#fileuploadError").val(0);
+     return false;
+    }
+
+    var resellerVal = $("#resellerYes").is(":checked");
+    var taxExm = $("#taxExmptYes").is(":checked");   
+    var throwErrortax = false;
+    var throwError = false;
     
+    if (resellerVal) {      
+       $("#resellerState p").each(function(index){        
+          if($(this).find("select").val() == '') {           
+            throwError = true;
+            $("#fileuploadError").val(0);
+          }
+          if($(this).find("input").val() == '') {           
+            throwError = true;
+            $("#fileuploadError").val(0);
+          }
+          
+       });
+    }   
+    if (throwError) {
+      //code
+      $("#resellerState").prepend("<div class='nomatchdrop'>Please make sure customer reseller state and file upload filed is not empty</div>");
+      $(".nomatchdrop").hide(5000);
+      return false;
+    }
+    
+    if (taxExm) {
+       var throwErrortax = false;
+     
+       $("#taxExmptState p").each(function(index){        
+          if($(this).find("select").val() == '') {           
+            throwErrortax = true;
+            $("#fileuploadError").val(0);
+          }
+          if($(this).find("input").val() == '') {           
+            throwErrortax = true;
+            $("#fileuploadError").val(0);
+          }
+          
+       });
+    }
+    if (throwErrortax) {
+      //code
+      $("#taxExmptState").prepend("<div class='nomatchdrop'>Please make sure customer tax exempt state and file upload filed is not empty</div>");
+      $(".nomatchdrop").hide(5000);
+      return false;
+    }    
+    $("#fileuploadError").val(1);
+    return true;
+  
+   });
+  
+  
+   $("#tax-collection").validate({
+        
         // Specify the validation rules
         rules: {
             cNumber: "required",
@@ -144,6 +209,7 @@ $(document).ready(function() {
               usfaxFormat: true,
             },
             cWebsite: "required"
+           
         },
         
         // Specify the validation error messages
@@ -160,13 +226,18 @@ $(document).ready(function() {
                  usfaxFormat: "Enter a valid fax number"
             },
             cWebsite: "Website is required"
+            
         },
         
+      
         submitHandler: function(form) {
+           if($("#fileuploadError").val()!=0) {
+            $( "#loading" ).show();
+           }
             form.submit();
         }
     });
-    
+   
     //Ajax trigger for validating customer number
     $( "#cNumber" ).blur(function() {
         var request = $.ajax({
