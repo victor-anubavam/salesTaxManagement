@@ -252,21 +252,21 @@ $(document).ready(function() {
 		var result = data.result;
 		var rid    = result.rid;
 		var recs   = result.recs;      
-        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
+        	$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
 		$( "#rid" ).val(rid);
 		$('#cContactName').val(recs[8]);
 		$('#cEmail').val(recs[9]);
 		$('#cTele').val(recs[10]);
 		$('#cFax').val(recs[11]);
 		$('#cWebsite').val(recs[12]);
-        $('#btnSubmit').removeAttr('disabled');
-	   } else {
+        	$('#btnSubmit').removeAttr('disabled');
+	    } else {
 		//alert( 'no matching record found' )
-        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
-        $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>");
-        $(".nomatch").hide(4000);
-        $('#btnSubmit').attr('disabled', 'true');
-        $('#cContactName').val('');
+        	$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
+        	$("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>");
+        	$(".nomatch").hide(4000);
+        	$('#btnSubmit').attr('disabled', 'true');
+        	$('#cContactName').val('');
 		$('#cEmail').val('');
 		$('#cTele').val('');
 		$('#cFax').val('');
