@@ -191,14 +191,14 @@ padding:5px 5px 0;
   float: left;
   font-size: 12px;
  /* padding-right: 10px;*/
-  width: 50%;
+  width: 49%;
 }
 #taxExmpt {
   color: #58595b;
   float: right;
   font-size: 12px;
 /*  padding-left: 10px;*/
-  width: 50%;
+  width: 49%;
 }
 #addReseller ,#addTaxExmpt ,.remSell ,.remTaxExmpt {
   background: #EDEDED;
@@ -222,7 +222,7 @@ padding:5px 5px 0;
 }
 #taxReseller select ,#taxExmptState select,#taxReseller input,
 #taxExmptState input  {
-  font-size: 12px;
+  font-size: 11px;
 }
 .btnSubmit {
   margin-left: 0 !important;
@@ -261,20 +261,20 @@ input[type="text"] {
   /*height: 50px;*/
 }
 .nomatch {
-    border: 1px dotted #000000;
-    color: #FF0000;
-    font-size: 16px;
-    margin-bottom: 10px;
-    padding: 12px;
-    text-align: center;
-    text-transform: uppercase;
+  border: 1px dotted #000000;
+  color: #FF0000;
+  font-size: 16px;
+  margin-bottom: 10px;
+  padding: 12px;
+  text-align: center;
+  text-transform: uppercase;
 }
 .nomatchdrop {
-     border: 1px dotted #000000;
-    color: #FF0000;
-    font-size: 11px;
-    margin-bottom: 10px;
-    padding: 5px;
-    text-align: center;
-    text-transform: uppercase;
+  border: 1px dotted #000000;
+  color: #FF0000;
+  font-size: 11px;
+  margin-bottom: 10px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
 }
