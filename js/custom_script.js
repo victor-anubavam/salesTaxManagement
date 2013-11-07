@@ -159,7 +159,7 @@ $(document).ready(function() {
     if (throwError) {
       //code
       $("#resellerState").prepend("<div class='nomatchdrop'>Please make sure customer reseller state and file upload filed is not empty</div>");
-      $(".nomatchdrop").hide(5000);
+      $(".nomatchdrop").delay(800).fadeOut(3500);
       return false;
     }
     
@@ -181,7 +181,7 @@ $(document).ready(function() {
     if (throwErrortax) {
       //code
       $("#taxExmptState").prepend("<div class='nomatchdrop'>Please make sure customer tax exempt state and file upload filed is not empty</div>");
-      $(".nomatchdrop").hide(5000);
+      $(".nomatchdrop").delay(800).fadeOut(3500);
       return false;
     }    
     $("#fileuploadError").val(1);
@@ -207,9 +207,7 @@ $(document).ready(function() {
             cFax: {
               /*required: true,*/
               usfaxFormat: true,
-            },
-            cWebsite: "required"
-           
+            }
         },
         
         // Specify the validation error messages
@@ -224,9 +222,7 @@ $(document).ready(function() {
             cFax: {
                /* required : "Fax is required",*/
                  usfaxFormat: "Enter a valid fax number"
-            },
-            cWebsite: "Website is required"
-            
+            }            
         },
         
       
@@ -252,7 +248,7 @@ $(document).ready(function() {
 		var result = data.result;
 		var rid    = result.rid;
 		var recs   = result.recs;      
-        	$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
+        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
 		$( "#rid" ).val(rid);
 		$('#cContactName').val(recs[8]);
 		$('#cEmail').val(recs[9]);
@@ -262,11 +258,11 @@ $(document).ready(function() {
         	$('#btnSubmit').removeAttr('disabled');
 	    } else {
 		//alert( 'no matching record found' )
-        	$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
-        	$("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>");
-        	$(".nomatch").hide(4000);
-        	$('#btnSubmit').attr('disabled', 'true');
-        	$('#cContactName').val('');
+        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
+        $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>").fadeIn('slow');
+        $(".nomatch").delay(800).fadeOut(3500);
+        $('#btnSubmit').attr('disabled', 'true');
+        $('#cContactName').val('');
 		$('#cEmail').val('');
 		$('#cTele').val('');
 		$('#cFax').val('');
