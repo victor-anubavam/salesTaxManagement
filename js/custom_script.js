@@ -6,7 +6,8 @@ $(document).ready(function() {
      $( document ).ajaxStop(function() {
         $( "#loading" ).hide();
     });
-  $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite, input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
+  //$("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip, #cContactName, #cEmail, #cTele, #cFax,#cWebsite, input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
+  $("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip").attr("readonly",true); 
   var states = '<option value="">Select State</option>' +
 				'<option value="AB">AB</option>' +
 				'<option value="AK">AK</option>' +
@@ -113,6 +114,10 @@ $(document).ready(function() {
       $('#totalTaxCert').val($('#taxExmptState p').size());
   });
   
+  $( "#editContactInfo" ).click(function() {
+      $("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip").attr("readonly",false); 
+      $('customerName').focus();
+  });
   $.validator.addMethod("usPhoneFormat", function (value, element) {
     return this.optional(element) || /^\(\d{3}\) \d{3}\-\d{4}( x\d{1,6})?$/.test(value);
   }, "Enter a valid phone number.");
@@ -122,6 +127,7 @@ $(document).ready(function() {
   }, "Enter a valid fax number.");
   
    $("#cTele,#cFax").mask("?(999) 999-9999");
+   $("#zip").mask("9999");
   
  
    $("#tax-collection").submit(function(){
@@ -194,6 +200,11 @@ $(document).ready(function() {
         
         // Specify the validation rules
         rules: {
+            customerName : 'required',
+            addr1 : 'required',
+            state : 'required',
+            city : 'required', 
+            zip : 'required',
             cNumber: "required",
             cContactName: "required",
             cEmail: {
@@ -212,6 +223,11 @@ $(document).ready(function() {
         
         // Specify the validation error messages
         messages: {
+            customerName : 'Customer name is required',
+            addr1 : 'Address line 1 is required',
+            state : 'State is required',
+            city : 'City is required', 
+            zip : 'Zip code is required',
             cNumber: "Customer number is required",
             cContactName: "Contact name is required",
             cTele: {               
@@ -242,31 +258,44 @@ $(document).ready(function() {
 	  data: { type : 'validateCustomerNumber', cNumber : $( "#cNumber" ).val() },
 	  dataType: "json"
 	});
+    
+    
         
 	request.done(function( data ) {
-	   if (data.result != 'no matching record found') {
-		var result = data.result;
-		var rid    = result.rid;
-		var recs   = result.recs;      
-        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
-		$( "#rid" ).val(rid);
-		$('#cContactName').val(recs[8]);
-		$('#cEmail').val(recs[9]);
-		$('#cTele').val(recs[10]);
-		$('#cFax').val(recs[11]);
-		$('#cWebsite').val(recs[12]);
+	    if (data.result != 'no matching record found') {
+            var result = data.result;
+            var rid    = result.rid;
+            var recs   = result.recs;   
+            $('#custDetails').show();
+            //$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
+            $( "#rid" ).val(rid);
+            /*
+            $('#cContactName').val(recs[8]);
+            $('#cEmail').val(recs[9]);
+            $('#cTele').val(recs[10]);
+            $('#cFax').val(recs[11]);
+            $('#cWebsite').val(recs[12]);
+            */
+            $('#customerName').val(recs[1]);
+            $('#addr1').val(recs[2]);
+            $('#addr2').val(recs[3]);
+            $('#addr3').val(recs[4]);
+            $('#city').val(recs[5]);
+            $('#state').val(recs[6]);
+            $('#zip').val(recs[7]);
         	$('#btnSubmit').removeAttr('disabled');
-	    } else {
-		//alert( 'no matching record found' )
-        $("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
-        $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>").fadeIn('slow');
-        $(".nomatch").delay(800).fadeOut(3500);
-        $('#btnSubmit').attr('disabled', 'true');
-        $('#cContactName').val('');
-		$('#cEmail').val('');
-		$('#cTele').val('');
-		$('#cFax').val('');
-		$('#cWebsite').val('');
+        } else {
+            //alert( 'no matching record found' )
+            $('#custDetails').hide();
+            //$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
+            $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>").fadeIn('slow');
+            $(".nomatch").delay(800).fadeOut(3500);
+            $('#btnSubmit').attr('disabled', 'true');
+            $('#cContactName').val('');
+            $('#cEmail').val('');
+            $('#cTele').val('');
+            $('#cFax').val('');
+            $('#cWebsite').val('');
 	   }
   	   //$( "#log" ).html( msg );
 	});

@@ -22,201 +22,283 @@
 	<input type="hidden" name="type" id="type" value="postdata">
     <input type="hidden" id="totalSellerCert" name="totalSellerCert" value="1">
     <input type="hidden" id="totalTaxCert" name="totalTaxCert" value="1">
-	<input type="hidden" id="fileuploadError" name="fileuploadError" value="1">
-    <!-- 
-    <div class="label">Customer Name</div><input type="text" id="customername" name="customername" /><br />
-    <div class="label">Address Line 1</div><input type="text" id="addr1" name="addr1" /><br />
-    <div class="label">Address Line 2</div><input type="text" id="addr2" name="addr2" /><br />
-    <div class="label">Address Line 3</div><input type="text" id="addr3" name="addr3" /><br />
-	<div class="label">State</div><input type="text" id="state" name="state" /><br />
-    <div class="label">City</div><input type="text" id="city" name="city" /><br />
-    <div class="label">Zip</div><input type="text" id="zip" name="zip" /><br />
-    <br><br>
-    -->
-	<div class="searchcus">
-	<div class="label">Customer Number <span class="req">*</span></div><input type="text" id="cNumber" name="cNumber" />
-	</div>
-	<fieldset>
-	     <legend>Customer Contact Information</legend>
-	  
-             <div class="label">Contact Name <span class="req">*</span></div><input type="text" id="cContactName" name="cContactName" /><br /><br />
-             <div class="label">E-mail Address <span class="req">*</span></div><input type="text" id="cEmail" name="cEmail" /><br /><br />
-             <div class="label">Telephone <span class="req">*</span></div><input type="text" id="cTele" name="cTele" /><br /> <br />
-	     <div class="label">Fax </div><input type="text" id="cFax" name="cFax" /><br /><br />
-             <div class="label">Website </div><input type="text" id="cWebsite" name="cWebsite" /><br /><br />    
-	</fieldset>
-	<br>
-	<fieldset class="taxinfo">
-	<legend>Tax Information</legend>
-	<div id="status"></div>
-	<div id="taxReseller">
-		<div class="taxquestion">
-			<div class="label">Is a customer reseller ?</div>
-			<br>
-			<input id="resellerYes" type="radio" name="reseller" value="Yes">Yes
-			<input id="resellerNo" type="radio" name="reseller" value="No">No
-			<br>	
-		</div>
-        <div id="resellerState" style="display: none;"><p>
-			<select id="selectResellerState_1" name="selectResellerState_1">
-				<option value="">Select State</option>
-				<option value="AB">AB</option>
-				<option value="AK">AK</option>
-				<option value="AL">AL</option>
-				<option value="AR">AR</option>
-				<option value="AZ">AZ</option>
-				<option value="BC">BC</option>
-				<option value="CA">CA</option>
-				<option value="CO">CO</option>
-				<option value="CT">CT</option>
-				<option value="DC">DC</option>
-				<option value="DE">DE</option>
-				<option value="FL">FL</option>
-				<option value="GA">GA</option>
-				<option value="HI">HI</option>
-				<option value="IA">IA</option>
-				<option value="ID">ID</option>
-				<option value="IL">IL</option>
-				<option value="IN">IN</option>
-				<option value="KS">KS</option>
-				<option value="KY">KY</option>
-				<option value="LA">LA</option>
-				<option value="MA">MA</option>
-				<option value="MB">MB</option>
-				<option value="MD">MD</option>
-				<option value="ME">ME</option>
-				<option value="MI">MI</option>
-				<option value="MN">MN</option>
-				<option value="MO">MO</option>
-				<option value="MS">MS</option>
-				<option value="MT">MT</option>
-				<option value="NB">NB</option>
-				<option value="NC">NC</option>
-				<option value="ND">ND</option>
-				<option value="NE">NE</option>
-				<option value="NH">NH</option>
-				<option value="NJ">NJ</option>
-				<option value="NL">NL</option>
-				<option value="NM">NM</option>
-				<option value="NS">NS</option>
-				<option value="NT">NT</option>
-				<option value="NU">NU</option>
-				<option value="NV">NV</option>
-				<option value="NY">NY</option>
-				<option value="OH">OH</option>
-				<option value="OK">OK</option>
-				<option value="ON">ON</option>
-				<option value="OR">OR</option>
-				<option value="PA">PA</option>
-				<option value="PE">PE</option>
-				<option value="QC">QC</option>
-				<option value="RI">RI</option>
-				<option value="SC">SC</option>
-				<option value="SD">SD</option>
-				<option value="SK">SK</option>
-				<option value="TN">TN</option>
-				<option value="TX">TX</option>
-				<option value="UT">UT</option>
-				<option value="VA">VA</option>
-				<option value="VT">VT</option>
-				<option value="WA">WA</option>
-				<option value="WI">WI</option>
-				<option value="WV">WV</option>
-				<option value="WY">WY</option>
-				<option value="YT">YT</option>
-     			</select>
-			<!-- <div id="mulitplefileuploaderReseller">Upload</div> -->
-			<input type="file" name="cResellerDoc_1" id="cResellerDoc_1">
-            </p>
-		</div>
-		<a href="#" id="addReseller" style="display: none;">Add Another Form </a>
-	</div>
-	
-	<div id="taxExmpt">
-		<div class="taxquestion">
-    			<div class="label">Is a customer tax exempt ?</div>
-			<br>
-			<input id="taxExmptYes" type="radio" name="taxexempt" value="Yes">Yes
-			<input id="taxExmptNo" type="radio" name="taxexempt" value="No">No
-		</div>
-        <div id="taxExmptState" style="display: none;"><p> 
-			<select id="selectTaxExmptState_1" name="selectTaxExmptState_1">
-				<option value="">Select State</option>
-				<option value="AB">AB</option>
-				<option value="AK">AK</option>
-				<option value="AL">AL</option>
-				<option value="AR">AR</option>
-				<option value="AZ">AZ</option>
-				<option value="BC">BC</option>
-				<option value="CA">CA</option>
-				<option value="CO">CO</option>
-				<option value="CT">CT</option>
-				<option value="DC">DC</option>
-				<option value="DE">DE</option>
-				<option value="FL">FL</option>
-				<option value="GA">GA</option>
-				<option value="HI">HI</option>
-				<option value="IA">IA</option>
-				<option value="ID">ID</option>
-				<option value="IL">IL</option>
-				<option value="IN">IN</option>
-				<option value="KS">KS</option>
-				<option value="KY">KY</option>
-				<option value="LA">LA</option>
-				<option value="MA">MA</option>
-				<option value="MB">MB</option>
-				<option value="MD">MD</option>
-				<option value="ME">ME</option>
-				<option value="MI">MI</option>
-				<option value="MN">MN</option>
-				<option value="MO">MO</option>
-				<option value="MS">MS</option>
-				<option value="MT">MT</option>
-				<option value="NB">NB</option>
-				<option value="NC">NC</option>
-				<option value="ND">ND</option>
-				<option value="NE">NE</option>
-				<option value="NH">NH</option>
-				<option value="NJ">NJ</option>
-				<option value="NL">NL</option>
-				<option value="NM">NM</option>
-				<option value="NS">NS</option>
-				<option value="NT">NT</option>
-				<option value="NU">NU</option>
-				<option value="NV">NV</option>
-				<option value="NY">NY</option>
-				<option value="OH">OH</option>
-				<option value="OK">OK</option>
-				<option value="ON">ON</option>
-				<option value="OR">OR</option>
-				<option value="PA">PA</option>
-				<option value="PE">PE</option>
-				<option value="QC">QC</option>
-				<option value="RI">RI</option>
-				<option value="SC">SC</option>
-				<option value="SD">SD</option>
-				<option value="SK">SK</option>
-				<option value="TN">TN</option>
-				<option value="TX">TX</option>
-				<option value="UT">UT</option>
-				<option value="VA">VA</option>
-				<option value="VT">VT</option>
-				<option value="WA">WA</option>
-				<option value="WI">WI</option>
-				<option value="WV">WV</option>
-				<option value="WY">WY</option>
-				<option value="YT">YT</option>
-     			</select>
-			<!-- <div id="mulitplefileuploaderTaxExmpt">Upload</div> -->
-            <input type="file" name="cTaxExmptDoc_1" id="cTaxExmptDoc_1"></p>
-		</div>
-		<a href="#" id="addTaxExmpt" style="display: none;">Add Another Form </a>
-	</div>	
-	</fieldset>
-	
-   <br><br>
-<div class="btnSubmit" style="margin-left:140px;"><input id="btnSubmit" type="submit" name="submit" value="Submit" disabled /></div>
+	<input type="hidden" id="fileuploadError" name="fileuploadError" value="1">    
     
+	<div class="searchcus">
+        
+        <div class="label">Customer Number <span class="req">*</span></div><input type="text" id="cNumber" name="cNumber" />
+	</div>
+    <div id="custDetails" style="display: none;">
+        <fieldset>
+             <legend>Customer Contact Information</legend>
+             <div class="info">
+                    <b><i>Is this information correct? If not, please click edit and make the necessary changes.</i></b>
+                </div>
+                 <div class="label">Customer Name<span class="req">*</span></div>
+                 <input type="text" id="customerName" name="customerName" />
+                 <span id="editContactInfo">Edit</span>
+                 <br /><br />
+                 <div class="label">Address Line 1<span class="req">*</span></div>
+                 <input type="text" id="addr1" name="addr1" /><br /><br />
+                 <div class="label">Address Line 2</div>
+                 <input type="text" id="addr2" name="addr2" /><br /><br />
+                 <div class="label">Address Line 3</div>
+                 <input type="text" id="addr3" name="addr3" /><br /><br />
+                 <div class="label">State<span class="req">*</span></div>
+                 <select id="state" name="state">
+                    <option value="">Select State</option>
+                    <option value="AB">AB</option>
+                    <option value="AK">AK</option>
+                    <option value="AL">AL</option>
+                    <option value="AR">AR</option>
+                    <option value="AZ">AZ</option>
+                    <option value="BC">BC</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DC">DC</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="IA">IA</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="MA">MA</option>
+                    <option value="MB">MB</option>
+                    <option value="MD">MD</option>
+                    <option value="ME">ME</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MO">MO</option>
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="NB">NB</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="NE">NE</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NL">NL</option>
+                    <option value="NM">NM</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="NV">NV</option>
+                    <option value="NY">NY</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="ON">ON</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="SK">SK</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VA">VA</option>
+                    <option value="VT">VT</option>
+                    <option value="WA">WA</option>
+                    <option value="WI">WI</option>
+                    <option value="WV">WV</option>
+                    <option value="WY">WY</option>
+                    <option value="YT">YT</option>
+                 </select>
+                 <br /><br />
+                 <div class="label">City<span class="req">*</span></div>
+                 <input type="text" id="city" name="city" /><br /><br />
+                 <div class="label">Zip<span class="req">*</span></div>
+                 <input type="text" id="zip" name="zip" /><br /><br>
+                 <div class="label">Contact Name <span class="req">*</span></div>
+                 <input type="text" id="cContactName" name="cContactName" /><br /><br />
+                 <div class="label">E-mail Address <span class="req">*</span></div>
+                 <input type="text" id="cEmail" name="cEmail" /><br /><br />
+                 <div class="label">Telephone <span class="req">*</span></div>
+                 <input type="text" id="cTele" name="cTele" /><br /> <br />
+                 <div class="label">Fax </div>
+                 <input type="text" id="cFax" name="cFax" /><br /><br />
+                 <div class="label">Website </div>
+                 <input type="text" id="cWebsite" name="cWebsite" /><br /><br />    
+        </fieldset>
+        <br>
+        <fieldset class="taxinfo">
+        <legend>Tax Information</legend>
+        <div id="status"></div>
+        <div id="taxReseller">
+            <div class="taxquestion">
+                <div class="label">Is a customer reseller ?</div>
+                <br>
+                <input id="resellerYes" type="radio" name="reseller" value="Yes">Yes
+                <input id="resellerNo" type="radio" name="reseller" value="No">No
+                <br>	
+            </div>
+            <div id="resellerState" style="display: none;"><p>
+                <select id="selectResellerState_1" name="selectResellerState_1">
+                    <option value="">Select State</option>
+                    <option value="AB">AB</option>
+                    <option value="AK">AK</option>
+                    <option value="AL">AL</option>
+                    <option value="AR">AR</option>
+                    <option value="AZ">AZ</option>
+                    <option value="BC">BC</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DC">DC</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="IA">IA</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="MA">MA</option>
+                    <option value="MB">MB</option>
+                    <option value="MD">MD</option>
+                    <option value="ME">ME</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MO">MO</option>
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="NB">NB</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="NE">NE</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NL">NL</option>
+                    <option value="NM">NM</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="NV">NV</option>
+                    <option value="NY">NY</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="ON">ON</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="SK">SK</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VA">VA</option>
+                    <option value="VT">VT</option>
+                    <option value="WA">WA</option>
+                    <option value="WI">WI</option>
+                    <option value="WV">WV</option>
+                    <option value="WY">WY</option>
+                    <option value="YT">YT</option>
+                    </select>
+                <!-- <div id="mulitplefileuploaderReseller">Upload</div> -->
+                <input type="file" name="cResellerDoc_1" id="cResellerDoc_1">
+                </p>
+            </div>
+            <a href="#" id="addReseller" style="display: none;">Add Another Form </a>
+        </div>
+
+        <div id="taxExmpt">
+            <div class="taxquestion">
+                    <div class="label">Is a customer tax exempt ?</div>
+                <br>
+                <input id="taxExmptYes" type="radio" name="taxexempt" value="Yes">Yes
+                <input id="taxExmptNo" type="radio" name="taxexempt" value="No">No
+            </div>
+            <div id="taxExmptState" style="display: none;"><p> 
+                <select id="selectTaxExmptState_1" name="selectTaxExmptState_1">
+                    <option value="">Select State</option>
+                    <option value="AB">AB</option>
+                    <option value="AK">AK</option>
+                    <option value="AL">AL</option>
+                    <option value="AR">AR</option>
+                    <option value="AZ">AZ</option>
+                    <option value="BC">BC</option>
+                    <option value="CA">CA</option>
+                    <option value="CO">CO</option>
+                    <option value="CT">CT</option>
+                    <option value="DC">DC</option>
+                    <option value="DE">DE</option>
+                    <option value="FL">FL</option>
+                    <option value="GA">GA</option>
+                    <option value="HI">HI</option>
+                    <option value="IA">IA</option>
+                    <option value="ID">ID</option>
+                    <option value="IL">IL</option>
+                    <option value="IN">IN</option>
+                    <option value="KS">KS</option>
+                    <option value="KY">KY</option>
+                    <option value="LA">LA</option>
+                    <option value="MA">MA</option>
+                    <option value="MB">MB</option>
+                    <option value="MD">MD</option>
+                    <option value="ME">ME</option>
+                    <option value="MI">MI</option>
+                    <option value="MN">MN</option>
+                    <option value="MO">MO</option>
+                    <option value="MS">MS</option>
+                    <option value="MT">MT</option>
+                    <option value="NB">NB</option>
+                    <option value="NC">NC</option>
+                    <option value="ND">ND</option>
+                    <option value="NE">NE</option>
+                    <option value="NH">NH</option>
+                    <option value="NJ">NJ</option>
+                    <option value="NL">NL</option>
+                    <option value="NM">NM</option>
+                    <option value="NS">NS</option>
+                    <option value="NT">NT</option>
+                    <option value="NU">NU</option>
+                    <option value="NV">NV</option>
+                    <option value="NY">NY</option>
+                    <option value="OH">OH</option>
+                    <option value="OK">OK</option>
+                    <option value="ON">ON</option>
+                    <option value="OR">OR</option>
+                    <option value="PA">PA</option>
+                    <option value="PE">PE</option>
+                    <option value="QC">QC</option>
+                    <option value="RI">RI</option>
+                    <option value="SC">SC</option>
+                    <option value="SD">SD</option>
+                    <option value="SK">SK</option>
+                    <option value="TN">TN</option>
+                    <option value="TX">TX</option>
+                    <option value="UT">UT</option>
+                    <option value="VA">VA</option>
+                    <option value="VT">VT</option>
+                    <option value="WA">WA</option>
+                    <option value="WI">WI</option>
+                    <option value="WV">WV</option>
+                    <option value="WY">WY</option>
+                    <option value="YT">YT</option>
+                    </select>
+                <!-- <div id="mulitplefileuploaderTaxExmpt">Upload</div> -->
+                <input type="file" name="cTaxExmptDoc_1" id="cTaxExmptDoc_1"></p>
+            </div>
+            <a href="#" id="addTaxExmpt" style="display: none;">Add Another Form </a>
+        </div>	
+        </fieldset>
+        <br><br>
+        <div class="btnSubmit" style="margin-left:140px;"><input id="btnSubmit" type="submit" name="submit" value="Submit" disabled /></div>
+    </div> 
 </form>
 </body>
 </html>

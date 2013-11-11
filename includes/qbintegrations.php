@@ -27,24 +27,56 @@ function getCustomerDetails($quickbase, $customerNumber) {
 	
 	return $records;
 }
-
+function filterData($data){
+    if(trim($data) != ''){
+        $data = addslashes(strip_tags($data));
+    }
+    return trim($data);
+}
 function updateCustomerData ($quickbase, $dataArray) {
 	$fields = array(
+        array(
+		'fid'   => '7',
+		'value' => filterData($dataArray['customerName'])),
+        array(
+		'fid'   => '8',
+		'value' => filterData($dataArray['addr1'])),
+        array(
+		'fid'   => '9',
+		'value' => filterData($dataArray['addr2'])),
+        array(
+		'fid'   => '10',
+		'value' => filterData($dataArray['addr3'])),
+        array(
+		'fid'   => '11',
+		'value' => filterData($dataArray['city'])),
+        array(
+		'fid'   => '12',
+		'value' => filterData($dataArray['state'])),
+        array(
+		'fid'   => '13',
+		'value' => filterData($dataArray['zip'])),
 	    array(
 		'fid'   => '14',
-		'value' => $dataArray['cContactName']),
+		'value' => filterData($dataArray['cContactName'])),
 	    array(
 		'fid'   => '15',
-		'value' => $dataArray['cEmail']),
+		'value' => filterData($dataArray['cEmail'])),
 	    array(
 		'fid'   => '16',
-		'value'=>  $dataArray['cTele']),
+		'value'=>  filterData($dataArray['cTele'])),
 	    array(
 		'fid'   => '17',
-		'value'=>  $dataArray['cFax']),
+		'value'=>  filterData($dataArray['cFax'])),
 	    array(
 		'fid'   => '18',
-		'value'=> $dataArray['cWebsite'])
+		'value'=> filterData($dataArray['cWebsite'])),
+	    array(
+		'fid'   => '19',
+		'value'=> filterData($dataArray['reseller'])),
+	    array(
+		'fid'   => '20',
+		'value'=> filterData($dataArray['taxexempt']))
 	  );
 	  //echo 'rid: '.$dataArray['rid'].'<br>';
 	  //print_r($fields);
@@ -91,20 +123,20 @@ function addCertificateQB ($docType, $i, $quickbaseCert){
     $fields = array(
         array(
             'fid'   => '6',
-            'value' => $_POST[$uploadState]),
+            'value' => filterData($_POST[$uploadState])),
         array(
             'fid'   => '8',
             'value'=> @date('Y-m-d')),
         array(
             'fid'   => '10',
-            'value'=> $docType,
+            'value'=> $docType),
         array(
             'fid'   => '11',
-            'value'=> $_POST['cNumber']),
+            'value'=> filterData($_POST['cNumber'])),
         array(
             'fid'   => '12',
             'value'=> $certType)
-        ));
+        );
 
         $res = $quickbaseCert->add_record($fields, $uploads);
     
@@ -114,7 +146,7 @@ function addCertificateQB ($docType, $i, $quickbaseCert){
             $fields = array(
                     array(
                         'fid'   => '11',
-                        'value' => $_POST['cNumber']),
+                        'value' => filterData($_POST['cNumber'])),
                     array(
                         'fid'   => '12',
                         'value'=> $certType)
