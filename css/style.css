@@ -255,6 +255,7 @@ input[type="text"] {
   margin-left: 5px;
   padding-bottom: 5px;
   padding-top: 10px;
+  width: 18px;
 }
 #loading center{
   background: none repeat scroll 0 0 #EEEEEE;
