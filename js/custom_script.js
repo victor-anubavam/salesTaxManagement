@@ -213,11 +213,11 @@ $(document).ready(function() {
             },
             cTele: {
                 required: true ,
-                usPhoneFormat: true,
+                usPhoneFormat: true
             },
             cFax: {
               /*required: true,*/
-              usfaxFormat: true,
+              usfaxFormat: true
             }
         },
         
