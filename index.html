@@ -14,7 +14,7 @@
 <body>
     <div id="loading" style="display: none;"><center style="margin-top: 30%;"><img src="css/loading.gif"/><center></div>
 <h1>TAX Certificate Collection Form</h1>
-
+<div id="header"><img src="css/logo_metro_header.jpg"/></div>
 <div id="iframeloading"><iframe id="iframeUploader" name="iframeUploader" style="width:50%;height:54px;border:none;"></iframe> </div>
 <form action="./process.php" method="POST" id="tax-collection" novalidate="novalidate" enctype="multipart/form-data" target="iframeUploader" >
 	<div id="filData"><span class="req">*</span> Mandatory field.</div>
@@ -27,6 +27,7 @@
 	<div class="searchcus">
         
         <div class="label">Customer Number <span class="req">*</span></div><input type="text" id="cNumber" name="cNumber" />
+	<input type="submit" class="form-submit" value="Search" name="op" id="edit-submit">
 	</div>
     <div id="custDetails" style="display: none;">
         <fieldset>
@@ -34,6 +35,7 @@
              <div class="info">
                     <b><i>Is this information correct? If not, please click edit and make the necessary changes.</i></b>
                 </div>
+	     <div class="no-edit_form">
                  <div class="label">Customer Name<span class="req">*</span></div>
                  <input type="text" id="customerName" name="customerName" />
                  <span id="editContactInfo">Edit</span>
@@ -116,7 +118,7 @@
                  <div class="label">City<span class="req">*</span></div>
                  <input type="text" id="city" name="city" /><br /><br />
                  <div class="label">Zip<span class="req">*</span></div>
-                 <input type="text" id="zip" name="zip" /><br /><br>
+                 <input type="text" id="zip" name="zip" /></div><br /><br>
                  <div class="label">Contact Name <span class="req">*</span></div>
                  <input type="text" id="cContactName" name="cContactName" /><br /><br />
                  <div class="label">E-mail Address <span class="req">*</span></div>

@@ -236,10 +236,25 @@ padding:5px 5px 0;
   /*margin-left: 212px;*/
 }
 label.error{
-  padding: 5px 0 0 5px;
+  padding: 5px 0 ;
+}
+.searchcus label.error {
+  float: right;
+  position: relative;
+  right: 40px;
 }
 input[type="text"] {
   width: 215px;
+}
+.searchcus input.form-submit {
+  background: url("icon-search.png") no-repeat scroll 1px 0 rgba(0, 0, 0, 0) !important;
+  border: medium none;
+  cursor: pointer;
+  font-size: 0;
+  height: 20px;
+  margin-left: 5px;
+  padding-bottom: 5px;
+  padding-top: 10px;
 }
 #loading center{
   background: none repeat scroll 0 0 #EEEEEE;
@@ -292,4 +307,8 @@ input[type="text"] {
     padding-right:5px;
     font-size: 13px;
     cursor: pointer;
+}
+.no-edit_form {
+    border: 1px dotted #bfbfbf;
+    padding: 12px;
 }
