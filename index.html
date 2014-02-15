@@ -9,7 +9,7 @@
 <script src="./js/jquery.maskedinput.min.js"></script>
 <script src="./js/custom_script.js"></script>
 <link href="./css/style.css" rel="stylesheet">
-	
+
 </head>
 <body>
     <div id="loading" style="display: none;"><center style="margin-top: 30%;"><img src="css/loading.gif"/><center></div>
@@ -22,22 +22,37 @@
 	<input type="hidden" name="type" id="type" value="postdata">
     <input type="hidden" id="totalSellerCert" name="totalSellerCert" value="1">
     <input type="hidden" id="totalTaxCert" name="totalTaxCert" value="1">
-	<input type="hidden" id="fileuploadError" name="fileuploadError" value="1">    
-    
+	<input type="hidden" id="fileuploadError" name="fileuploadError" value="1">
+
 	<div class="searchcus">
-        
-        <div class="label">Customer Number <span class="req">*</span></div><input type="text" id="cNumber" name="cNumber" />
-	<input type="submit" class="form-submit" value="Search" name="op" id="edit-submit">
+        <div class="label">Customer Number <span class="req">*</span></div>
+		<input type="text" id="cNumber" name="cNumber" />
+	<input type="button" class="form-submit" value="Go" name="op" id="search-customer">
+	</div>
+	<div id="cnf-container" style="display: none;">
+		<div class="info" id="cnf-msg">
+			<b><i>Is the company listed below correct? If not, please re-enter your customer number (provided in letter).</i></b>
+			<div id="confirm">
+				<span id="confirmYes">Yes</span>
+				<span>|</span>
+				<span id="confirmNo">No</span>
+			</div>
+		</div>
+		<div id="custName">
+			<div class="label">Customer Name<span class="req">*</span></div>
+			<input type="text" id="customerName" name="customerName" />
+		</div>
+	</div>
+	<div id="cnf-no-msg" class="info" style="display: none;">
+		Please re-enter your customer number or contact Tricia Bump at 570-706-4115.
 	</div>
     <div id="custDetails" style="display: none;">
         <fieldset>
-             <legend>Customer Contact Information</legend>
-             <div class="info">
-                    <b><i>Is this information correct? If not, please click edit and make the necessary changes.</i></b>
-                </div>
+            <legend>Customer Contact Information</legend>
+
 	     <div class="no-edit_form">
-                 <div class="label">Customer Name<span class="req">*</span></div>
-                 <input type="text" id="customerName" name="customerName" />
+                 <!-- <div class="label">Customer Name<span class="req">*</span></div>
+                 <input type="text" id="customerName" name="customerName" /> -->
                  <span id="editContactInfo">Edit</span>
                  <br /><br />
                  <div class="label">Address Line 1<span class="req">*</span></div>
@@ -128,7 +143,7 @@
                  <div class="label">Fax </div>
                  <input type="text" id="cFax" name="cFax" /><br /><br />
                  <div class="label">Website </div>
-                 <input type="text" id="cWebsite" name="cWebsite" /><br /><br />    
+                 <input type="text" id="cWebsite" name="cWebsite" /><br /><br />
         </fieldset>
         <br>
         <fieldset class="taxinfo">
@@ -140,7 +155,7 @@
                 <br>
                 <input id="resellerYes" type="radio" name="reseller" value="Yes">Yes
                 <input id="resellerNo" type="radio" name="reseller" value="No">No
-                <br>	
+                <br>
             </div>
             <div id="resellerState" style="display: none;"><p>
                 <select id="selectResellerState_1" name="selectResellerState_1">
@@ -224,7 +239,7 @@
                 <input id="taxExmptYes" type="radio" name="taxexempt" value="Yes">Yes
                 <input id="taxExmptNo" type="radio" name="taxexempt" value="No">No
             </div>
-            <div id="taxExmptState" style="display: none;"><p> 
+            <div id="taxExmptState" style="display: none;"><p>
                 <select id="selectTaxExmptState_1" name="selectTaxExmptState_1">
                     <option value="">Select State</option>
                     <option value="AB">AB</option>
@@ -296,11 +311,11 @@
                 <input type="file" name="cTaxExmptDoc_1" id="cTaxExmptDoc_1"></p>
             </div>
             <a href="#" id="addTaxExmpt" style="display: none;">Add Another Form </a>
-        </div>	
+        </div>
         </fieldset>
         <br><br>
         <div class="btnSubmit" style="margin-left:140px;"><input id="btnSubmit" type="submit" name="submit" value="Submit" disabled /></div>
-    </div> 
+    </div>
 </form>
 </body>
 </html>

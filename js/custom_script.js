@@ -6,8 +6,8 @@ $(document).ready(function() {
      $( document ).ajaxStop(function() {
         $( "#loading" ).hide();
     });
-  //$("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip, #cContactName, #cEmail, #cTele, #cFax,#cWebsite, input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
-  $("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip").attr("readonly",true); 
+  //$("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip, #cContactName, #cEmail, #cTele, #cFax,#cWebsite, input[name='reseller'],input[name='taxexempt']").attr("disabled",true);
+  $("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip").attr("readonly",true);
   var states = '<option value="">Select State</option>' +
 				'<option value="AB">AB</option>' +
 				'<option value="AK">AK</option>' +
@@ -82,27 +82,27 @@ $(document).ready(function() {
 	onSuccess:function(files,data,xhr)
 	{
 		$("#status").html("<font color='green'>Upload is success</font>");
-		
+
 	},
 	onError: function(files,status,errMsg)
-	{		
+	{
 		$("#status").html("<font color='red'>Upload is Failed</font>");
 	}
    }
 
-  
+
   $( "#resellerNo" ).click(function() {
       $('#resellerState').hide();
       $('#addReseller').hide();
       $('#totalSellerCert').val(0);
   });
-  
+
   $( "#resellerYes" ).click(function() {
       $('#resellerState').show();
       $('#addReseller').show();
       $('#totalSellerCert').val($('#resellerState p').size());
   });
-  
+
   $( "#taxExmptNo" ).click(function() {
       $('#taxExmptState').hide();
       $('#addTaxExmpt').hide();
@@ -113,23 +113,23 @@ $(document).ready(function() {
       $('#addTaxExmpt').show();
       $('#totalTaxCert').val($('#taxExmptState p').size());
   });
-  
+
   $( "#editContactInfo" ).click(function() {
-      $("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip").attr("readonly",false); 
+      $("#customerName, #addr1, #addr2, #addr3, #state, #city, #zip").attr("readonly",false);
       $('customerName').focus();
   });
   $.validator.addMethod("usPhoneFormat", function (value, element) {
     return this.optional(element) || /^\(\d{3}\) \d{3}\-\d{4}( x\d{1,6})?$/.test(value);
   }, "Enter a valid phone number.");
-  
+
   $.validator.addMethod("usfaxFormat", function (value, element) {
     return this.optional(element) || /^\(\d{3}\) \d{3}\-\d{4}( x\d{1,6})?$/.test(value);
   }, "Enter a valid fax number.");
-  
+
    $("#cTele,#cFax").mask("?(999) 999-9999");
    $("#zip").mask("9999");
-  
- 
+
+
    $("#tax-collection").submit(function(){
     var boxes = $('input[name=reseller]:checked');
     if($(boxes).size() == 0) {
@@ -145,43 +145,43 @@ $(document).ready(function() {
     }
 
     var resellerVal = $("#resellerYes").is(":checked");
-    var taxExm = $("#taxExmptYes").is(":checked");   
+    var taxExm = $("#taxExmptYes").is(":checked");
     var throwErrortax = false;
     var throwError = false;
-    
-    if (resellerVal) {      
-       $("#resellerState p").each(function(index){        
-          if($(this).find("select").val() == '') {           
+
+    if (resellerVal) {
+       $("#resellerState p").each(function(index){
+          if($(this).find("select").val() == '') {
             throwError = true;
             $("#fileuploadError").val(0);
           }
-          if($(this).find("input").val() == '') {           
+          if($(this).find("input").val() == '') {
             throwError = true;
             $("#fileuploadError").val(0);
           }
-          
+
        });
-    }   
+    }
     if (throwError) {
       //code
       $("#resellerState").prepend("<div class='nomatchdrop'>Please make sure customer reseller state and file upload filed is not empty</div>");
       $(".nomatchdrop").delay(800).fadeOut(3500);
       return false;
     }
-    
+
     if (taxExm) {
        var throwErrortax = false;
-     
-       $("#taxExmptState p").each(function(index){        
-          if($(this).find("select").val() == '') {           
+
+       $("#taxExmptState p").each(function(index){
+          if($(this).find("select").val() == '') {
             throwErrortax = true;
             $("#fileuploadError").val(0);
           }
-          if($(this).find("input").val() == '') {           
+          if($(this).find("input").val() == '') {
             throwErrortax = true;
             $("#fileuploadError").val(0);
           }
-          
+
        });
     }
     if (throwErrortax) {
@@ -189,21 +189,21 @@ $(document).ready(function() {
       $("#taxExmptState").prepend("<div class='nomatchdrop'>Please make sure customer tax exempt state and file upload filed is not empty</div>");
       $(".nomatchdrop").delay(800).fadeOut(3500);
       return false;
-    }    
+    }
     $("#fileuploadError").val(1);
     return true;
-  
+
    });
-  
-  
+
+
    $("#tax-collection").validate({
-        
+
         // Specify the validation rules
         rules: {
             customerName : 'required',
             addr1 : 'required',
             state : 'required',
-            city : 'required', 
+            city : 'required',
             zip : 'required',
             cNumber: "required",
             cContactName: "required",
@@ -220,17 +220,17 @@ $(document).ready(function() {
               usfaxFormat: true
             }
         },
-        
+
         // Specify the validation error messages
         messages: {
             customerName : 'Customer name is required',
             addr1 : 'Address line 1 is required',
             state : 'State is required',
-            city : 'City is required', 
+            city : 'City is required',
             zip : 'Zip code is required',
             cNumber: "Customer number is required",
             cContactName: "Contact name is required",
-            cTele: {               
+            cTele: {
                 required: "Telephone is required",
                 usfaxFormat: "Enter a valid phone number"
             },
@@ -238,10 +238,10 @@ $(document).ready(function() {
             cFax: {
                /* required : "Fax is required",*/
                  usfaxFormat: "Enter a valid fax number"
-            }            
+            }
         },
-        
-      
+
+
         submitHandler: function(form) {
            if($("#fileuploadError").val()!=0) {
             $( "#loading" ).show();
@@ -249,25 +249,42 @@ $(document).ready(function() {
             form.submit();
         }
     });
-   
+
+    $( "#search-customer" ).click(function() {
+		$( "#cNumber" ).trigger( "blur" );
+	});
+
+
     //Ajax trigger for validating customer number
     $( "#cNumber" ).blur(function() {
+		$('#cnf-no-msg').hide();
+		$('#custDetails').hide();
         var request = $.ajax({
 	  url: "./process.php",
 	  type: "POST",
 	  data: { type : 'validateCustomerNumber', cNumber : $( "#cNumber" ).val() },
 	  dataType: "json"
 	});
-    
-    
-        
+	$( "#confirmYes" ).click(function() {
+		$('#custDetails').show();
+		$('#cnf-no-msg').hide();
+		$('#cnf-msg').hide();
+	});
+	$( "#confirmNo" ).click(function() {
+		$('#custDetails').hide();
+		$('#cnf-no-msg').show();
+		$('#cnf-container').hide();
+	});
+
 	request.done(function( data ) {
 	    if (data.result != 'no matching record found') {
             var result = data.result;
             var rid    = result.rid;
-            var recs   = result.recs;   
-            $('#custDetails').show();
-            //$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false); 
+            var recs   = result.recs;
+
+            $('#cnf-container').show();
+			$('#cnf-msg').show();
+            //$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",false);
             $( "#rid" ).val(rid);
             /*
             $('#cContactName').val(recs[8]);
@@ -286,8 +303,8 @@ $(document).ready(function() {
         	$('#btnSubmit').removeAttr('disabled');
         } else {
             //alert( 'no matching record found' )
-            $('#custDetails').hide();
-            //$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true); 
+            $('#cnf-container').hide();
+            //$("#cContactName, #cEmail, #cTele, #cFax,#cWebsite,input[name='reseller'],input[name='taxexempt']").attr("disabled",true);
             $("#tax-collection").prepend("<div class='nomatch'>No matching record found</div>").fadeIn('slow');
             $(".nomatch").delay(800).fadeOut(3500);
             $('#btnSubmit').attr('disabled', 'true');
@@ -300,8 +317,8 @@ $(document).ready(function() {
   	   //$( "#log" ).html( msg );
 	});
     });
-   
-   
+
+
   $(function() {
        // Add or remove reseller files
         var resellerDiv = $('#resellerState');
@@ -310,48 +327,47 @@ $(document).ready(function() {
             $('<p> '+
                    '<select id="selectResellerState_'+i+'" name="selectResellerState_'+i+'">'+
                     states + '</select>'+
-                    '<input type="file" name="cResellerDoc_'+i+'" id="cResellerDoc_'+i+'">' + 
+                    '<input type="file" name="cResellerDoc_'+i+'" id="cResellerDoc_'+i+'">' +
                     '<a href="#" class="remSell">Remove</a>' +
                     '</p>').appendTo(resellerDiv);
             $('#totalSellerCert').val(i);
             i++;
-            
+
             return false;
         });
         $("#resellerState").on("click", "a.remSell", function(){
             if( i > 2 ) {
                 $(this).parents('p').remove();
-                i--;                
+                i--;
             }
-            
+
             $('#totalSellerCert').val($('#resellerState p').size());
             return false;
         });
-        
-        //Add or remove taxexmpt files        
+
+        //Add or remove taxexmpt files
         var taxExmptDiv = $('#taxExmptState');
         var j = $('#taxExmptState p').size() + 1;
-        
+
         $('#addTaxExmpt').on('click', function() {
             $('<p> '+
                    '<select id="selectTaxExmptState_'+j+'" name="selectTaxExmptState_'+j+'">'+
                     states + '</select>'+
-                    '<input type="file" name="cTaxExmptDoc_'+j+'" id="cTaxExmptDoc_'+j+'">' + 
+                    '<input type="file" name="cTaxExmptDoc_'+j+'" id="cTaxExmptDoc_'+j+'">' +
                     '<a href="#" class="remTaxExmpt">Remove</a>' +
                     '</p>').appendTo(taxExmptDiv);
             $('#totalTaxCert').val(j);
             j++;
-            
+
             return false;
         });
         $("#taxExmptState").on("click", "a.remTaxExmpt", function(){
             if( j > 2 ) {
                 $(this).parents('p').remove();
-                j--;                
+                j--;
             }
             $('#totalTaxCert').val($('#taxExmptState p').size());
             return false;
         });
     });
 });
-
